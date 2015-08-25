@@ -1,0 +1,34 @@
+<div ng-controller="TasksCtrl" layout-fill layout="column">
+  <div  layout-align="center center">
+      <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
+          <section class="inset md-toolbar-tools" layout="row" layout-align="start">
+
+              <md-input-container>
+                  <label>New Task Name</label>
+                  <input nglayout-align="center center"-model="user.newTaskName">
+              </md-input-container>
+              <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
+              <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">done</md-icon></md-button>
+              <md-input-container flex offset="25">
+                  <label>No groups</label>
+                  <md-select ng-model="ctrl.userState">
+                      <md-option ng-repeat="" value="{{}}}">{{}}}</md-option>
+                  </md-select>
+              </md-input-container>
+              <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">cached</md-icon></md-button>
+              <md-input-container md-theme="input" flex>
+                  <label>&nbsp;</label>
+                  <input ng-model="search.who" placeholder="enter search">
+              </md-input-container>
+              <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">search</md-icon></md-button>
+          </section>
+      </md-toolbar>
+
+
+  </div>
+
+    <div>
+       <p>Tasks</p>
+    </div>
+
+</div>
