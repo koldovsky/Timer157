@@ -1,5 +1,5 @@
 <div ng-controller="TasksCtrl" layout-fill layout="column">
-  <div  layout-align="center center">
+
       <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
           <section class="inset md-toolbar-tools" layout="row" layout-align="start">
 
@@ -24,11 +24,47 @@
           </section>
       </md-toolbar>
 
+       <md-content layout="row" layout-align="center ">
+            <md-list flex class="md-list-margin">
+                <md-list-item>
+                    <div flex="25"><h3>Name</h3></div>
+                    <div flex="15"><h3>Time</h3></div>
+                    <div flex="15"><h3>Goal</h3></div>
+                    <div flex="25"><h3>Progress</h3></div>
+                    <div flex="20"><h3 class="md-align-left">Actions</h3></div>
+                </md-list-item>
+                <!--Start Repeat-->
+                <div>
+                    <md-divider ></md-divider>
+                    <md-list-item class="" layout-padding="10">
 
-  </div>
-
-    <div>
-       <p>Tasks</p>
-    </div>
-
+                        <div flex="25">Timer Name</div>
+                        <div flex="15">00:00:00</div>
+                        <div flex="15">--</div>
+                        <div flex="25">Progress</div>
+                        <div flex="20">
+                            <div layout="row">
+                                <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
+                                <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">menu</md-icon></md-button>
+                                <md-button class="md-icon-button md-warn inset"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                            </div>
+                        </div>
+                    </md-list-item>
+                </div>
+                <!--End Repeat-->
+                <md-divider ></md-divider>
+                <md-list-item layout-padding="10">
+                    <div flex="25"><h3>Total</h3></div>
+                    <div flex="15"><h3>Time</h3></div>
+                    <div flex="15"></div>
+                    <div flex="25"></div>
+                    <div flex="20">
+                        <div layout="row">
+                            <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">file_download</md-icon></md-button>
+                            <md-button class="md-icon-button md-warn inset"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                        </div>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
 </div>

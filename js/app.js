@@ -41,7 +41,7 @@ angular.module('timerApp', [
         };
 
 
-        $scope.toggleRight = buildToggler('left');
+        $scope.toggleLeft = buildToggler('left');
         function buildToggler(navID) {
             var debounceFn =  $mdUtil.debounce(function(){
                 $mdSidenav(navID)
