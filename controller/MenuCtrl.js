@@ -1,27 +1,8 @@
-(function(){
+(function() {
 
     'use strict';
 
-angular.module('timerApp', [
-    'ngRoute',
-    'timerApp.todo',
-    'timerApp.tasks',
-    'timerApp.statistics',
-    'timerApp.archive',
-    'timerApp.version',
-    'ngMaterial'
-])
-
-.config(['$routeProvider', function($routeProvider ) {
-    $routeProvider.otherwise({redirectTo: '/tasks'});
-}])
-
-.controller('MainCtrl', function($scope) {
-
-
-})
-
-.controller('MenuCtrl', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+    angular.module('timerApp').controller('MenuCtrl', function ($scope, $mdSidenav, $mdUtil, $log) {
 
         $scope.menu = {};
         $scope.menu.pages = [
@@ -42,6 +23,8 @@ angular.module('timerApp', [
 
 
         $scope.toggleLeft = buildToggler('left');
+        $scope.toggleRight = buildToggler('right');
+
         function buildToggler(navID) {
             var debounceFn =  $mdUtil.debounce(function(){
                 $mdSidenav(navID)
@@ -54,19 +37,7 @@ angular.module('timerApp', [
         }
 
 
-    })
-    .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-        $scope.close = function () {
-            $mdSidenav('left').close()
-                .then(function () {
-                    $log.debug("close LEFT is done");
-                });
-        };
     });
+
 })();
-
-
-
-
-
 

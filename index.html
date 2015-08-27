@@ -25,7 +25,9 @@
 
   <md-toolbar class="app-toolbar md-indigo-theme md-whiteframe-z2 fix-top">
     <div class="md-toolbar-tools" layout="row">
-        <md-button class="md-icon-button" ng-click="toggleLeft()" hide-gt-md> <md-icon md-font-set="material-icons">menu</md-icon></md-button>
+        <md-button class="md-icon-button" ng-click="toggleLeft()" hide-gt-md>
+            <md-icon md-font-set="material-icons">menu</md-icon>
+        </md-button>
         <div hide-sm>Mega Timer</div>
         <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
             <md-icon md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
@@ -57,16 +59,10 @@
     </div>
   </section>
 
-
-
-
   <!--Views-->
   <md-content  flex ng-view layout-align="center center" layout-fill>
 
   </md-content>
-
-
-
 
   <!-- Angular Material Dependencies -->
 
@@ -79,14 +75,17 @@
   <script src="bower_components/angular-material/angular-material.js"></script>
 
   <!-- Other Scripts -->
-  <script src="pages/tasks/tasks.js"></script>
-  <script src="pages/todo/todo.js"></script>
-  <script src="pages/statistics/statistics.js"></script>
-  <script src="pages/archive/archive.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <script src="modul/timerApp.js"></script>
 
-  <script src="js/app.js"></script>
+  <script src="controller/MainCtrl.js"></script>
+  <script src="controller/MenuCtrl.js"></script>
+  <script src="controller/LeftCtrl.js"></script>
+  <script src="controller/TasksCtrl.js"></script>
+  <script src="controller/TodoCtrl.js"></script>
+  <script src="controller/StatCtrl.js"></script>
+  <script src="controller/ArchiveCtrl.js"></script>
+
+
+
 </body>
 </html>
