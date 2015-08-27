@@ -8,10 +8,18 @@
     padding: 8px;
 }
 
-.md-align-left {
-    padding-left: 23%;
-}
 
 .md-list-margin{
     margin: 2%;
+}
+
+.md-align-l{
+    text-align: left;
+}
+.md-align-r{
+    text-align: right;
+}
+
+.md-align-c{
+    text-align: center;
 }

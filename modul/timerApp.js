@@ -4,7 +4,7 @@
 
 angular.module('timerApp', ['ngRoute', 'ngMaterial'])
 
-.config(['$routeProvider', function($routeProvider ) {
+.config(['$routeProvider',function($routeProvider ) {
     $routeProvider
         .when('/tasks', {
             templateUrl: 'view/tasks.html',
@@ -23,6 +23,8 @@ angular.module('timerApp', ['ngRoute', 'ngMaterial'])
             controller: 'ArchiveCtrl'
         })
         .otherwise({redirectTo: '/tasks'});
+
+
 }]);
 
 
