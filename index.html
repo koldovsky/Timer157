@@ -21,7 +21,7 @@
 
 </head>
 
-<body  ng-controller="MainCtrl">
+<body>
 <section  ng-controller="MenuCtrl">
 
   <md-toolbar class="app-toolbar md-indigo-theme md-whiteframe-z2 fix-top">
@@ -76,15 +76,17 @@
   <script src="bower_components/angular-material/angular-material.js"></script>
 
   <!-- Other Scripts -->
-  <script src="modul/timerApp.js"></script>
-
-  <script src="controller/MainCtrl.js"></script>
-  <script src="controller/MenuCtrl.js"></script>
-  <script src="controller/LeftCtrl.js"></script>
-  <script src="controller/TasksCtrl.js"></script>
-  <script src="controller/TodoCtrl.js"></script>
-  <script src="controller/StatCtrl.js"></script>
-  <script src="controller/ArchiveCtrl.js"></script>
+  <script src="classes/timer_class.js"></script>
+  <script src="classes/archived_timer.js"></script>
+  <script src="modules/timerApp.js"></script>
+  
+  <script src="services/tasksservice.js"></script>
+  
+  <script src="controllers/menucontroller.js"></script>
+  <script src="controllers/leftcontroller.js"></script>
+  <script src="controllers/todocontroller.js"></script>
+  <script src="controllers/taskscontroller.js"></script>
+  <script src="controllers/archivecontroller.js"></script>
 
 
 
