@@ -4,8 +4,7 @@
 
 angular.module('timerApp', ['ngRoute', 'ngMaterial'])
 
-.config(['$routeProvider','$locationProvider','$httpProvider', function($routeProvider, $locationProvider,$httpProvider){
-        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+.config(['$routeProvider','$locationProvider','$httpProvider', function($routeProvider, $locationProvider){
 
         $locationProvider.html5Mode(true);
 
