@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <!--[if lt IE 7]>      <html lang="en" ng-app="timerApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="timerApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="timerApp" class="no-js lt-ie9"> <![endif]-->
@@ -7,6 +7,8 @@
   <title>Mega Timer</title>
 
   <meta charset="utf-8">
+    <!--Initialize the base directory-->
+    <base href="/Timer157/">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Mega Timer descroption">
@@ -21,7 +23,7 @@
 
 </head>
 
-<body>
+<body  ng-controller="LocationCtrl">
 <section  ng-controller="MenuCtrl">
 
   <md-toolbar class="app-toolbar md-indigo-theme md-whiteframe-z2 fix-top">
@@ -30,7 +32,7 @@
             <md-icon md-font-set="material-icons">menu</md-icon>
         </md-button>
         <div hide-sm>Mega Timer</div>
-        <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
+        <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="{{baseUrl}}{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
             <md-icon md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
         </md-button>
     </div>
@@ -49,7 +51,7 @@
               <md-content layout-padding ng-controller="LeftCtrl">
                   <md-list>
                       <md-list-item ng-repeat="page in menu.pages">
-                          <md-button ng-click="menu.toggleSelectPage(page)"  ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" >
+                          <md-button ng-click="menu.toggleSelectPage(page)"  ng-href="{{baseUrl}}{{page.url}}" md-highlight="menu.isPageSelected(page)" >
                              <md-icon  md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
                           </md-button>
                       </md-list-item>
@@ -59,7 +61,6 @@
           </md-sidenav>
     </div>
   </section>
-
   <!--Views-->
   <md-content  flex ng-view layout-align="center center" layout-fill>
 

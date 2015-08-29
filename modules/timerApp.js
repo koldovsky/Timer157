@@ -4,10 +4,14 @@
 
 angular.module('timerApp', ['ngRoute', 'ngMaterial'])
 
-.config(['$routeProvider', function($routeProvider ) {
-    $routeProvider
+.config(['$routeProvider','$locationProvider','$httpProvider', function($routeProvider, $locationProvider,$httpProvider){
+        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+        $locationProvider.html5Mode(true);
+
+        $routeProvider
         .when('/tasks', {
-            templateUrl: 'views/tasks.html'
+                templateUrl: 'views/tasks.html'
         })
         .when('/todo', {
             templateUrl: 'views/todo.html'
@@ -21,7 +25,9 @@ angular.module('timerApp', ['ngRoute', 'ngMaterial'])
         .otherwise({redirectTo: '/tasks'});
 
 
-}]);
+}]).controller("LocationCtrl", function($scope){
+        $scope.baseUrl = window.location.pathname;
+    });
 
 
 })();
