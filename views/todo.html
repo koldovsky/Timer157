@@ -1,0 +1,49 @@
+<div ng-controller="TodoController" layout-fill layout="column" >
+    <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
+        <section class="inset md-toolbar-tools" layout="row" layout-align="start">
+
+            <md-input-container>
+                <label>New Todo Name</label>
+                <input nglayout-align="center center" ng-model="todo.name">
+            </md-input-container>
+            <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
+            <md-button class="md-icon-button md-primary" ng-click="addTodo()"><md-icon md-font-set="material-icons">done</md-icon></md-button>
+            <md-input-container flex offset="25">
+                <label>Groups</label>
+                <md-select ng-model="ctrl.userState">
+                    <md-option value="{{}}}">{{}}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">cached</md-icon></md-button>
+            <md-input-container md-theme="input" flex>
+                <label>&nbsp;</label>
+                <input ng-model="search.who">
+            </md-input-container>
+            <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">search</md-icon></md-button>
+        </section>
+    </md-toolbar>
+
+    <md-content layout="row" layout-align="center ">
+        <md-list flex class="md-list-margin">
+            <md-list-item layout="row" >
+                <div flex="50"><h3>Name</h3></div>
+
+                <div flex="50" class="md-align-r"><h3>Actions</h3></div>
+            </md-list-item>
+            <!--Start Repeat-->
+            <div ng-repeat="todo in todos track by $index">
+                <md-divider ></md-divider>
+                <md-list-item class="" layout-padding="10">
+                    <div flex="50">{{todo.name}}</div>
+                    <div flex="50" class="md-align-r">
+                        <md-button class="md-icon-button md-primary inset" ng-click="startTodo($index)"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
+                        <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">menu</md-icon></md-button>
+                        <md-button class="md-icon-button md-warn inset" ng-click="removeTodo($index)"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                    </div>
+                </md-list-item>
+            </div>
+            <!--End Repeat-->
+            <md-divider ></md-divider>
+        </md-list>
+    </md-content>
+</div>

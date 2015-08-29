@@ -1,0 +1,73 @@
+<div ng-controller="TasksController" layout-fill layout="column">
+
+      <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
+          <section class="inset md-toolbar-tools" layout="column" layout-align="start" >
+			<div  flex layout="row" >
+              <md-input-container>
+                  <label>New Task Name</label>
+                  <input nglayout-align="center center"-model="user.newTaskName" ng-model="newTask.name">
+              </md-input-container>
+			  <md-input-container flex="20">
+                  <label>Goal</label>
+                  <input nglayout-align="center center"-model="user.newTaskName" ng-model="newTask.goal">
+              </md-input-container>
+			  </div>
+              <div>
+                  <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
+                  <md-button class="md-icon-button md-primary" ng-click="addTask()"><md-icon md-font-set="material-icons">done</md-icon></md-button>
+              </div>
+              <md-input-container flex offset="10" >
+                  <label>No groups</label>
+                  <md-select ng-model="ctrl.userState">
+                      <md-option value="{{}}}">{{}}}</md-option>
+                  </md-select>
+              </md-input-container>
+              <md-button class="md-icon-button md-primary" ><md-icon md-font-set="material-icons">cached</md-icon></md-button>
+              <md-input-container md-theme="input" flex >
+                  <label>&nbsp;</label>
+                  <input ng-model="search.who">
+              </md-input-container>
+              <md-button class="md-icon-button md-primary" hide-sm><md-icon md-font-set="material-icons">search</md-icon></md-button>
+          </section>
+      </md-toolbar>
+
+       <md-content layout="row" layout-align="center ">
+            <md-list flex class="md-list-margin">
+                <md-list-item>
+                    <div flex="25"><h3>Name</h3></div>
+                    <div flex="15" class="md-align-c"><h3>Time</h3></div>
+                    <div flex="15" class="md-align-c"><h3>Goal</h3></div>
+                    <div flex="25" class="md-align-c"><h3>Progress</h3></div>
+                    <div flex="20" class="md-align-r"><h3>Actions</h3></div>
+                </md-list-item>
+                <!--Start Repeat-->
+                <div ng-repeat="task in tasks track by $index">
+                    <md-divider ></md-divider>
+                    <md-list-item class="" layout-padding="10">
+                        <div flex="25">{{task.name}}</div>
+                        <div flex="15" class="md-align-c">{{getTime(task.currentTime)}}</div>
+                        <div flex="15" class="md-align-c">{{getTaskGoal(task)}}</div>
+                        <div flex="25" class="md-align-c"><md-progress-linear class="md-accent" md-mode="{{mode}}" value="{{determinateValue}}"></md-progress-linear></div>
+                        <div flex="20" class="md-align-r">
+                            <md-button class="md-icon-button md-primary inset" ng-click="startTask(task)" ng-hide="isRunning(task)"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
+							<md-button class="md-icon-button md-primary inset" ng-click="pauseTask(task)" ng-show="isRunning(task)"><md-icon md-font-set="material-icons">pause</md-icon></md-button>
+                            <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">menu</md-icon></md-button>
+                            <md-button class="md-icon-button md-warn inset" ng-click="addArchivedTimer(task, $index)"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                        </div>
+                    </md-list-item>
+                </div>
+                <!--End Repeat-->
+                <md-divider ></md-divider>
+                <md-list-item layout-padding="10">
+                    <div flex="25"><h3>Total</h3></div>
+                    <div flex="15" class="md-align-c"><h3>total</h3></div>
+                    <div flex="15"></div>
+                    <div flex="25"></div>
+                    <div flex="20" class="md-align-r">
+                        <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">file_download</md-icon></md-button>
+                        <md-button class="md-icon-button md-warn inset"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+</div>
