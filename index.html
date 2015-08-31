@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <!--[if lt IE 7]>      <html lang="en" ng-app="timerApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="timerApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="timerApp" class="no-js lt-ie9"> <![endif]-->
@@ -7,6 +7,9 @@
   <title>Mega Timer</title>
 
   <meta charset="utf-8">
+    <!--Initialize the base directory-->
+    <base href="/Timer157/">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Mega Timer descroption">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,14 +23,16 @@
 
 </head>
 
-<body  ng-controller="MainCtrl">
+<body  ng-controller="LocationCtrl">
 <section  ng-controller="MenuCtrl">
 
   <md-toolbar class="app-toolbar md-indigo-theme md-whiteframe-z2 fix-top">
     <div class="md-toolbar-tools" layout="row">
-        <md-button class="md-icon-button" ng-click="toggleRight()" hide-gt-md> <md-icon md-font-set="material-icons">menu</md-icon></md-button>
-        <div hide-sm>Mega Timer</div>
-        <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
+        <md-button class="md-icon-button" ng-click="toggleLeft()" hide-gt-md>
+            <md-icon md-font-set="material-icons">menu</md-icon>
+        </md-button>
+        <div class="hide-670">Mega Timer</div>
+        <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="{{baseUrl}}{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
             <md-icon md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
         </md-button>
     </div>
@@ -46,7 +51,7 @@
               <md-content layout-padding ng-controller="LeftCtrl">
                   <md-list>
                       <md-list-item ng-repeat="page in menu.pages">
-                          <md-button ng-click="menu.toggleSelectPage(page)"  ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" >
+                          <md-button ng-click="menu.toggleSelectPage(page)"  ng-href="{{baseUrl}}{{page.url}}" md-highlight="menu.isPageSelected(page)" >
                              <md-icon  md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
                           </md-button>
                       </md-list-item>
@@ -56,17 +61,10 @@
           </md-sidenav>
     </div>
   </section>
-
-
-
-
   <!--Views-->
   <md-content  flex ng-view layout-align="center center" layout-fill>
 
   </md-content>
-
-
-
 
   <!-- Angular Material Dependencies -->
 
@@ -79,14 +77,19 @@
   <script src="bower_components/angular-material/angular-material.js"></script>
 
   <!-- Other Scripts -->
-  <script src="pages/tasks/tasks.js"></script>
-  <script src="pages/todo/todo.js"></script>
-  <script src="pages/statistics/statistics.js"></script>
-  <script src="pages/archive/archive.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <script src="classes/timer_class.js"></script>
+  <script src="classes/archived_timer.js"></script>
+  <script src="modules/timerApp.js"></script>
+  
+  <script src="services/tasksservice.js"></script>
+  
+  <script src="controllers/menucontroller.js"></script>
+  <script src="controllers/leftcontroller.js"></script>
+  <script src="controllers/todocontroller.js"></script>
+  <script src="controllers/taskscontroller.js"></script>
+  <script src="controllers/archivecontroller.js"></script>
 
-  <script src="js/app.js"></script>
+
+
 </body>
 </html>
