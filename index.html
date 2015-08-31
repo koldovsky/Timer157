@@ -7,8 +7,6 @@
   <title>Mega Timer</title>
 
   <meta charset="utf-8">
-    <!--Initialize the base directory-->
-    <base href="/Timer157/">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Mega Timer descroption">
@@ -23,7 +21,7 @@
 
 </head>
 
-<body  ng-controller="LocationCtrl">
+<body>
 <section  ng-controller="MenuCtrl">
 
   <md-toolbar class="app-toolbar md-indigo-theme md-whiteframe-z2 fix-top">
@@ -32,7 +30,7 @@
             <md-icon md-font-set="material-icons">menu</md-icon>
         </md-button>
         <div class="hide-670">Mega Timer</div>
-        <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="{{baseUrl}}{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
+        <md-button layout-align="start" ng-click="menu.toggleSelectPage(page)" ng-repeat="page in menu.pages" ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" hide-sm>
             <md-icon md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
         </md-button>
     </div>
@@ -51,7 +49,7 @@
               <md-content layout-padding ng-controller="LeftCtrl">
                   <md-list>
                       <md-list-item ng-repeat="page in menu.pages">
-                          <md-button ng-click="menu.toggleSelectPage(page)"  ng-href="{{baseUrl}}{{page.url}}" md-highlight="menu.isPageSelected(page)" >
+                          <md-button ng-click="menu.toggleSelectPage(page)"  ng-href="#{{page.url}}" md-highlight="menu.isPageSelected(page)" >
                              <md-icon  md-font-set="material-icons">{{page.menuIcon}}</md-icon> <span > {{page.menuTitle}} </span>
                           </md-button>
                       </md-list-item>
@@ -77,17 +75,19 @@
   <script src="bower_components/angular-material/angular-material.js"></script>
 
   <!-- Other Scripts -->
-  <script src="classes/timer_class.js"></script>
-  <script src="classes/archived_timer.js"></script>
-  <script src="modules/timerApp.js"></script>
+  <script src="js/classes/timer_class.js"></script>
+  <script src="js/classes/archived_timer.js"></script>
+  <script src="js/modules/timerApp.js"></script>
   
-  <script src="services/tasksservice.js"></script>
+  <script src="js/services/tasksservice.js"></script>
   
-  <script src="controllers/menucontroller.js"></script>
-  <script src="controllers/leftcontroller.js"></script>
-  <script src="controllers/todocontroller.js"></script>
-  <script src="controllers/taskscontroller.js"></script>
-  <script src="controllers/archivecontroller.js"></script>
+  <script src="js/controllers/MenuCtrl.js"></script>
+  <script src="js/controllers/LeftCtrl.js"></script>
+  <script src="js/controllers/todocontroller.js"></script>
+  <script src="js/controllers/taskscontroller.js"></script>
+  <script src="js/controllers/archivecontroller.js"></script>
+  
+  <script src="js/filters/timeformat.js"></script>
 
 
 

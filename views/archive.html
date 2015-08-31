@@ -36,12 +36,12 @@
                 <md-divider ></md-divider>
                 <md-list-item class="" layout-padding="10">
                     <div flex="20">{{atimer.name}}</div>
-                    <div flex="15" class="md-align-c">{{getTime(atimer.currentTime)}}</div>
-                    <div flex="15" class="md-align-c hide-540">{{atimer.goal}}</div>
-                    <div flex="15" class="md-align-c hide-860">{{getTime(atimer.creationDate)}}</div>
-                    <div flex="15" class="md-align-c hide-860">{{getTime(atimer.closingDate)}}</div>
+                    <div flex="15" class="md-align-c">{{atimer.currentTime | timeFormat}}</div>
+                    <div flex="15" class="md-align-c hide-540">{{atimer.goal | timeFormat}}</div>
+                    <div flex="15" class="md-align-c hide-860">{{atimer.creationDate | timeFormat}}</div>
+                    <div flex="15" class="md-align-c hide-860">{{atimer.closingDate | timeFormat}}</div>
                     <div flex="20" class="md-align-r flex-40 " layout="row" layout-align="end">
-                        <md-button class="md-icon-button md-primary inset" ng-click="addTaskFromArchive(atimer, $index)" aria-label="Resume task">
+                        <md-button class="md-icon-button md-primary inset" ng-click="addTaskFromArchive($index)" aria-label="Resume task">
                             <md-icon md-font-set="material-icons">reply</md-icon>
                             <md-tooltip>
                                 Resume task
@@ -66,7 +66,7 @@
             <md-divider ></md-divider>
             <md-list-item layout-padding="10">
                 <div flex="20"><h3>Total</h3></div>
-                <div flex="15" class="md-align-c"><h3>Time</h3></div>
+                <div flex="15" class="md-align-c"><h3>{{totalTime | timeFormat}}</h3></div>
                 <div flex="15" class="md-align-c hide-540"></div>
                 <div flex="15" class="md-align-c hide-860"></div>
                 <div flex="15" class="md-align-c hide-860"></div>
