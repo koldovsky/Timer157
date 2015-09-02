@@ -9,7 +9,8 @@
             {url: '/tasks', menuTitle:'Tasks', menuIcon: 'dns'},
             {url: '/todo', menuTitle:'Todo', menuIcon: 'loupe'},
             {url: '/statistics', menuTitle:'Statistics', menuIcon: 'equalizer'},
-            {url: '/archive', menuTitle:'Archive', menuIcon: 'archive'}
+            {url: '/archive', menuTitle:'Archive', menuIcon: 'archive'},
+            {url: '/logs', menuTitle:'Logs', menuIcon: 'list'}
 
         ];
 

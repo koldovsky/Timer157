@@ -1,6 +1,12 @@
 (function() {
 'use strict';
-angular.module('timerApp').controller('TodoController', ['$scope', 'TasksService', function($scope, TasksService) {
+angular.module('timerApp').controller('TodoController', ['$scope',
+	'TasksService',
+	'LogsService',
+	'$route',
+	'$location',
+
+	function($scope, TasksService, LogsService, $route, $location ) {
 	$scope.todos = TasksService.getTodosList();
 
 	$scope.todo = {
@@ -9,6 +15,7 @@ angular.module('timerApp').controller('TodoController', ['$scope', 'TasksService
 
 	$scope.addTodo = function() {
 		TasksService.addTodo($scope.todo);
+		LogsService.addLog($scope.todo, $route, $location);
 		$scope.todo = {};
 	};
 	

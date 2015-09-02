@@ -19,6 +19,9 @@ angular.module('timerApp', ['ngRoute', 'ngMaterial','nvd3ChartDirectives' ])
         .when('/archive', {
             templateUrl: 'views/archive.html'
         })
+        .when('/logs', {
+                templateUrl: 'views/logs.html'
+            })
         .otherwise({redirectTo: '/tasks'});
 
 

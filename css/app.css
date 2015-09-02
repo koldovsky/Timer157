@@ -1,5 +1,11 @@
-body{
-overflow:hidden;
+@-moz-document url-prefix() {
+    body{
+          overflow:hidden;
+      }
+
+    .md-view {
+        padding-bottom: 5%;
+    }
 }
 
 .md-whiteframe-glow-z1 {

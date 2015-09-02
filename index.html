@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link rel="stylesheet" href="css/app.css"/>
-
+  <link rel="stylesheet" href="css/animate.css"/>
 </head>
 
 <body>
@@ -61,7 +61,7 @@
     </div>
   </section>
   <!--Views-->
-  <md-content  flex ng-view layout-align="center center" layout-fill>
+  <md-content  flex ng-view layout-align="center center" layout-fill class="md-view">
 
   </md-content>
 
@@ -78,19 +78,23 @@
   <script src="bower_components/angular-nvd3-master/lib/nv.d3.js"></script>   
   <script src="bower_components/angular-nvd3-master/lib/angularjs-nvd3-directives.min.js"></script>  
   <!-- Other Scripts -->
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="js/scripts/export.js"></script>
   <script src="js/classes/timer_class.js"></script>
   <script src="js/classes/archived_timer.js"></script>
   <script src="js/modules/timer_module.js"></script>
   
   <script src="js/services/tasks_service.js"></script>
-  
+  <script src="js/services/logs_service.js"></script>
+
+  <script src="js/controllers/logs_controller.js"></script>
   <script src="js/controllers/menu_controller.js"></script>
   <script src="js/controllers/left_controller.js"></script>
   <script src="js/controllers/todo_controller.js"></script>
   <script src="js/controllers/tasks_controller.js"></script>
   <script src="js/controllers/archive_controller.js"></script>
   <script src="js/controllers/stat_controller.js"></script>
-  <script src="js/filters/timeformat.js"></script>
+  <script src="js/filters/time_format.js"></script>
 
 
 

@@ -1,12 +1,13 @@
 (function() {
 'use strict';
 angular.module('timerApp')
-.controller('TasksController', ['$scope', 'TasksService', '$interval', 'timeFormatFilter',
-function($scope, TasksService, $interval, timeFormatFilter){
+.controller('TasksController', ['$scope', 'TasksService', 'LogsService', '$interval', 'timeFormatFilter','$route', '$location',
+function($scope, TasksService, LogsService, $interval, timeFormatFilter, $route, $location){
 	$scope.addTask = function(){
 		if($scope.newTask.name !== ''){
       if($scope.newTask.goal) $scope.newTask.goal *= 1000;
 			TasksService.addTask($scope.newTask);
+            LogsService.addLog($scope.newTask, $route, $location);
 			$scope.newTask.name = '';
 			$scope.newTask.goal = '';
 		}

@@ -1,0 +1,111 @@
+<div ng-controller="LogsController" layout-fill layout="column" >
+    <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
+        <section class="inset md-toolbar-tools" layout="row" layout-align="end">
+            <md-input-container  class="md-input-container-210" >
+                <label>Group</label>
+                <md-select ng-model="ctrl.userState">
+                    <md-option value="{{}}">{{}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-icon-button md-primary" aria-label="Show all tasks">
+                <md-icon md-font-set="material-icons">cached</md-icon>
+                <md-tooltip>
+                    Show all tasks
+                </md-tooltip>
+            </md-button>
+            <md-input-container md-theme="input" class="md-search">
+                <label>&nbsp;</label>
+                <input ng-model="search.who">
+            </md-input-container>
+            <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">search</md-icon></md-button>
+        </section>
+    </md-toolbar>
+
+    <md-content layout="row" layout-align="center ">
+        <md-list flex class="md-list-margin">
+            <md-list-item>
+                <div flex="1"><h3>ID</h3></div>
+                <div flex="8" class="md-align-c"><h3>Name</h3></div>
+                <div flex="10" class="md-align-c"><h3>Operation type</h3></div>
+                <div flex="10" class="md-align-c"><h3>Timer type</h3></div>
+                <div flex="10" class="md-align-c"><h3>Template url</h3></div>
+                <div flex="10" class="md-align-c"><h3>Controller</h3></div>
+                <div flex="30" class="md-align-c"><h3>Location</h3></div>
+				<div flex="10" class="md-align-c"><h3>Date</h3></div>
+                <div flex="10" class="md-align-c"><h3>Actions</h3></div>
+            </md-list-item>
+            <!--Start Repeat-->
+            <div ng-repeat="log in logs track by $index">
+                <md-divider ></md-divider>
+                <md-list-item class="" layout-padding="10">
+                    <div flex="1">{{log.id}}</div>
+                    <div flex="8" class="md-align-c">{{log.name}}</div>
+                    <div flex="10" class="md-align-c">{{log.name}}</div>
+                    <div flex="10" class="md-align-c">{{log.timerType}}</div>
+                    <div flex="10" class="md-align-c">{{log.templateUrl}}</div>
+                    <div flex="10" class="md-align-c">{{log.controller}}</div>
+                    <div flex="30" class="md-align-c">{{log.loc}}</div>
+					<div flex="10" class="md-align-c">{{log.date}}</div>
+					
+                    <div flex="10" class="md-align-c">
+                        <md-button class="md-icon-button md-warn inset" ng-click="deleteLog($index)"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                    </div>
+                </md-list-item>
+            </div>
+            <!--End Repeat-->
+            <md-divider ></md-divider>
+            <md-list-item layout-padding="10">
+                <div flex class="md-align-r" layout="row" layout-align="end">
+                    <div>
+                        <md-fab-speed-dial md-open="demo.isOpen" md-direction="left"
+                                           >
+                            <md-fab-trigger>
+                                <md-button aria-label="menu" class="md-icon-button md-primary" >
+                                    <md-icon md-font-set="material-icons">group_work</md-icon>
+                                </md-button>
+                            </md-fab-trigger>
+                            <md-fab-actions>
+                                <md-button aria-label="twitter" class="md-fab md-raised md-mini" onclick="console.log('test')">
+                                    <md-icon md-font-set="material-icons">close</md-icon>
+                                </md-button>
+                                <md-button aria-label="facebook" class="md-fab md-raised md-mini">
+                                    <md-icon md-font-set="material-icons">close</md-icon>
+                                </md-button>
+                                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                                    <md-icon md-font-set="material-icons">close</md-icon>
+                                </md-button>
+                            </md-fab-actions>
+                        </md-fab-speed-dial>
+                    </div>
+                    <md-button onclick="$('#logs').tableExport({type:'excel',escape:'false'});" class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">file_download</md-icon></md-button>
+                    <md-button ng-click="deleteAllLogs()" class="md-icon-button md-warn inset"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                </div>
+            </md-list-item>
+        </md-list>
+        
+    <table id="logs" class="table table-striped" style="visibility:hidden; position:fixed;" >
+	<thead>			
+		<tr class='warning'>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Timer type</th>
+			<th>Template url</th>
+			<th>Controller</th>
+			<th>Location</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="log in logs track by $index">
+        <td>{{log.id}}</td>
+        <td>{{log.name}}</td>
+        <td>{{log.timerType}}</td>
+        <td>{{log.templateUrl}}</td>
+        <td>{{log.controller}}</td>
+        <td>{{log.loc}}</td>
+        <td>{{log.date}}</td>
+		</tr>
+	</tbody>
+</table>
+    </md-content>
+</div>
