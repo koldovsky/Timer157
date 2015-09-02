@@ -1,4 +1,4 @@
-<div ng-controller="TodoController" layout-fill layout="column" >
+<div ng-controller="TodoController" layout-fill layout="column" class="animated fadeIn">
     <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
         <section class="inset md-toolbar-tools" layout="row" layout-align="start">
 
@@ -6,8 +6,12 @@
                 <label class="md-input-container-160">New Todo Name</label>
                 <input nglayout-align="center center" ng-model="todo.name">
             </md-input-container>
-            <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
-            <md-button class="md-icon-button md-primary" ng-click="addTodo()"><md-icon md-font-set="material-icons">done</md-icon></md-button>
+            <md-button class="md-icon-button md-primary" ng-click="addTodo()" aria-label="Create new todo">
+                <md-icon md-font-set="material-icons">done</md-icon>
+                <md-tooltip>
+                    Create new todo
+                </md-tooltip>
+            </md-button>
             <md-input-container class="md-input-container-210 hide-540">
                 <label>Groups</label>
                 <md-select ng-model="ctrl.userState">
@@ -24,7 +28,12 @@
                 <label>&nbsp;</label>
                 <input ng-model="search.who">
             </md-input-container>
-            <md-button class="md-icon-button md-primary hide-670"><md-icon md-font-set="material-icons">search</md-icon></md-button>
+            <md-button class="md-icon-button md-primary hide-670" aria-label="Search">
+                <md-icon md-font-set="material-icons">search</md-icon>
+                <md-tooltip>
+                    Search
+                </md-tooltip>
+            </md-button>
         </section>
     </md-toolbar>
 

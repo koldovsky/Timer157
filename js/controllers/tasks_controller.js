@@ -68,5 +68,6 @@ function($scope, TasksService, LogsService, $interval, timeFormatFilter, $route,
     $scope.totalTime += task.currentTime;
 	});
   $scope.showTimeInterval = $interval($scope.showTime, 1000);
+
 }]);
 })();

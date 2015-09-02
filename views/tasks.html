@@ -9,7 +9,6 @@
                   <label class="md-input-label-90">Goal</label>
                   <input nglayout-align="center center" ng-model="newTask.goal">
               </md-input-container>
-              <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
               <md-button class="md-icon-button md-primary" ng-click="addTask()" aria-label="Create new task">
                   <md-icon md-font-set="material-icons">done</md-icon>
                   <md-tooltip>
@@ -32,12 +31,17 @@
                   <label>&nbsp;</label>
                   <input ng-model="search.who">
               </md-input-container>
-              <md-button class="md-icon-button md-primary hide-670"><md-icon md-font-set="material-icons">search</md-icon></md-button>
+              <md-button class="md-icon-button md-primary hide-670" aria-label="Search">
+                  <md-icon md-font-set="material-icons">search</md-icon>
+                  <md-tooltip>
+                      Search
+                  </md-tooltip>
+              </md-button>
           </section>
       </md-toolbar>
 
        <md-content layout="row" layout-align="center " flex>
-            <md-list class="md-list-margin" flex="95">
+            <md-list class="md-list-margin" flex="95" ng-controller="DialogCtrl" >
                 <md-list-item>
                     <div flex="25"><h3>Name</h3></div>
                     <div flex="15" class="md-align-c"><h3>Time</h3></div>
@@ -66,7 +70,7 @@
                                     Pause task
                                 </md-tooltip>
                             </md-button>
-                            <md-button class="md-icon-button md-primary inset" aria-label="Show task details">
+                            <md-button class="md-icon-button md-primary inset" ng-click="showAdvanced()" aria-label="Show task details">
                                 <md-icon md-font-set="material-icons">menu</md-icon>
                                 <md-tooltip>
                                     Show task details
@@ -105,4 +109,5 @@
                 </md-list-item>
             </md-list>
         </md-content>
+
 </div>

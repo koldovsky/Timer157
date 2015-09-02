@@ -1,3 +1,7 @@
+body {
+   visibility: hidden;
+}
+
 @-moz-document url-prefix() {
     body{
           overflow:hidden;

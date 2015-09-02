@@ -1,0 +1,43 @@
+<md-dialog aria-label="Task name">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Task name</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-font-set="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-divider ></md-divider>
+        <md-list flex >
+            <md-list-item layout-padding="40">
+                <div flex="33" class="md-align-c"><h3>Start</h3></div>
+                <div flex="33" class="md-align-c"><h3>End</h3></div>
+                <div flex="33" class="md-align-c"><h3>Time</h3></div>
+
+            </md-list-item>
+            <md-list-item layout-padding="40">
+                <div flex="33" class="md-align-c">00:00:00</div>
+                <div flex="33" class="md-align-c">00:00:00</div>
+                <div flex="33" class="md-align-c">00:00:00</div>
+
+            </md-list-item>
+        </md-list>
+        <md-divider ></md-divider>
+        <div layout="row" layout-align="end" aria-label="Export task details">
+            <md-button class="md-icon-button md-primary inset">
+                <md-icon md-font-set="material-icons">file_download</md-icon>
+                <md-tooltip>
+                    Export task details
+                </md-tooltip>
+            </md-button>
+            <md-button class="md-icon-button md-warn inset" ng-click="cancel()" aria-label="Close">
+                <md-icon md-font-set="material-icons">close</md-icon>
+                <md-tooltip>
+                    Close
+                </md-tooltip>
+            </md-button>
+        </div>
+    </md-dialog-content>
+</md-dialog>
