@@ -3,11 +3,11 @@
           <section class="inset md-toolbar-tools" layout="column" layout-align="start" >
               <md-input-container class="md-input-container-160">
                   <label class="md-input-container-160">New Task Name</label>
-                  <input layout-align="center center" ng-model="user.newTaskName" ng-model="newTask.name">
+                  <input nglayout-align="center center" ng-model="newTask.name">
               </md-input-container>
 			  <md-input-container class="md-input-container-70">
                   <label class="md-input-label-90">Goal</label>
-                  <input layout-align="center center" ng-model="user.newTaskName" ng-model="newTask.goal">
+                  <input nglayout-align="center center" ng-model="newTask.goal">
               </md-input-container>
               <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">play_arrow</md-icon></md-button>
               <md-button class="md-icon-button md-primary" ng-click="addTask()" aria-label="Create new task">
@@ -36,31 +36,31 @@
           </section>
       </md-toolbar>
 
-       <md-content layout="row" layout-align="center ">
-            <md-list flex class="md-list-margin">
+       <md-content layout="row" layout-align="center " flex>
+            <md-list class="md-list-margin" flex="95">
                 <md-list-item>
                     <div flex="25"><h3>Name</h3></div>
                     <div flex="15" class="md-align-c"><h3>Time</h3></div>
                     <div flex="15" class="md-align-c hide-540"><h3>Goal</h3></div>
                     <div flex="25" class="md-align-c hide-670"><h3>Progress</h3></div>
-                    <div flex="20" class="md-align-r flex-40"><h3>Actions</h3></div>
+                    <div flex="20" class="md-align-c flex-40"><h3>Actions</h3></div>
                 </md-list-item>
                 <!--Start Repeat-->
                 <div ng-repeat="task in tasks track by $index">
                     <md-divider ></md-divider>
                     <md-list-item class="" layout-padding="10">
                         <div flex="25">{{task.name}}</div>
-                        <div flex="15" class="md-align-c">{{getTime(task.currentTime)}}</div>
-                        <div flex="15" class="md-align-c hide-540">{{getTaskGoal(task)}}</div>
+                        <div flex="15" class="md-align-c">{{task.currentTime | timeFormat}}</div>
+                        <div flex="15" class="md-align-c hide-540">{{getTaskGoal($index)}}</div>
                         <div flex="25" class="md-align-c hide-670"><md-progress-linear class="md-accent" md-mode="{{mode}}" value="{{determinateValue}}"></md-progress-linear></div>
                         <div class="md-align-r flex-40" layout="row">
-                            <md-button class="md-icon-button md-primary inset" ng-click="startTask(task)" ng-hide="isRunning(task)" aria-label="Start task">
+                            <md-button class="md-icon-button md-primary inset" ng-click="startTask($index)" ng-hide="task.isRunning" aria-label="Start task">
                                 <md-icon md-font-set="material-icons">play_arrow</md-icon>
                                 <md-tooltip>
                                     Start task
                                 </md-tooltip>
                             </md-button>
-							<md-button class="md-icon-button md-primary inset" ng-click="pauseTask(task)" ng-show="isRunning(task)" aria-label="Pause task">
+							<md-button class="md-icon-button md-primary inset" ng-click="pauseTask($index)" ng-show="task.isRunning" aria-label="Pause task">
                                 <md-icon md-font-set="material-icons">pause</md-icon>
                                 <md-tooltip>
                                     Pause task
@@ -72,7 +72,7 @@
                                     Show task details
                                 </md-tooltip>
                             </md-button>
-                            <md-button class="md-icon-button md-warn inset" ng-click="addArchivedTimer(task, $index)" aria-label="Archive task">
+                            <md-button class="md-icon-button md-warn inset" ng-click="removeTask($index)" aria-label="Archive task">
                                 <md-icon md-font-set="material-icons">close</md-icon>
                                 <md-tooltip>
                                     Archive task
@@ -85,7 +85,7 @@
                 <md-divider ></md-divider>
                 <md-list-item layout-padding="10">
                     <div flex="25"><h3>Total</h3></div>
-                    <div flex="15" class="md-align-c"><h3>total</h3></div>
+                    <div flex="15" class="md-align-c"><h3>{{totalTime | timeFormat}}</h3></div>
                     <div flex="15" class="hide-540"></div>
                     <div flex="25" class="hide-670"></div>
                     <div  class="md-align-r flex-40" layout="row" aria-label="Export all tasks">

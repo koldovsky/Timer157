@@ -2,11 +2,9 @@
 
     'use strict';
 
-angular.module('timerApp', ['ngRoute', 'ngMaterial'])
+angular.module('timerApp', ['ngRoute', 'ngMaterial','nvd3ChartDirectives' ])
 
-.config(['$routeProvider','$locationProvider','$httpProvider', function($routeProvider, $locationProvider){
-
-        $locationProvider.html5Mode(true);
+.config(['$routeProvider', function($routeProvider){
 
         $routeProvider
         .when('/tasks', {
@@ -24,12 +22,11 @@ angular.module('timerApp', ['ngRoute', 'ngMaterial'])
         .otherwise({redirectTo: '/tasks'});
 
 
-}]).controller("LocationCtrl", function($scope){
-        $scope.baseUrl = window.location.pathname;
-    });
+}]);
 
 
 })();
+
 
 
 

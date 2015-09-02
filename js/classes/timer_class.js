@@ -41,12 +41,12 @@ function CountDown() {
 CountDown.prototype = Object.create(Timer.prototype);
 CountDown.prototype.setLimitSec = function(limit) {
 	if(!isNaN(parseFloat(limit)) && isFinite(limit)) { 
-		this.limitSec = limit * 1000;
-		this.currentTime = limit * 1000;
+		this.limitSec = limit;
+		this.currentTime = limit;
 	}
 };
 CountDown.prototype.getLimitSec = function() {
-	 return '' + (this.limitSec / 1000);
+	 return this.limitSec;
 };
 CountDown.prototype.startTimer = function() {
 	clearTimeout(this.timerId);

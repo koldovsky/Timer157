@@ -28,9 +28,5 @@ angular.module('timerApp').controller('TodoController', ['$scope', 'TasksService
 	$scope.removeTodo = function(index){
 		TasksService.removeTodo(index);
 	};
-	
-	window.addEventListener('beforeunload', function(){
-		TasksService.saveTodos();
-	});
 }]);
 })();

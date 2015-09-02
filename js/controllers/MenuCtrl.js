@@ -13,8 +13,6 @@
 
         ];
 
-        $scope.menu.currentPage = $scope.menu.pages[0];
-
         $scope.menu.isPageSelected = function(page) {
             return ($scope.menu.currentPage === page);
         };

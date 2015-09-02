@@ -1,18 +1,59 @@
-<div  layout-fill layout="column">
-  <div layout-align="center center">
-      <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
-          <section class="inset md-toolbar-tools" layout="row" layout-align="start">
-
-              <md-radio-group ng-model="data.group1" layout="row">
-                  <md-radio-button value="Tasks" ng-value="Tasks" class="md-primary" >Tasks</md-radio-button>
-                  <md-radio-button value="Group">Group</md-radio-button>
-              </md-radio-group>
-
-
-
-          </section>
-
-      </md-toolbar>
-
-  </div>
+<div  layout-fill layout="column" ng-controller="StatCtrl">
+  <div>
+    <md-content class="md-padding" >
+      <md-tabs md-dynamic-height md-border-bottom>   
+        <md-tab label="Pie chart"> 
+          <md-content class="md-padding">
+            <h1 class="md-align-c">Tasks progress</h1>
+              <h2 class="md-align-c" ng-hide="!isDataEmpty">
+               The data for tasks is empty, and chart cannot be displayed !
+              </h2>
+              <nvd3-pie-chart
+                 id="pieChart"
+                 data="dataPieChart"
+                 x="xFunction()"
+                 y="yFunction()"
+                 width="500"
+                 height="300" 
+                 callback="setPositionSVG()"           
+                 donut="true"
+                 donutRatio=".30"
+                 showValues="true"
+                 showLabels="true"
+                 showControls="true"
+                 showLegend="true"             
+                 labelType="percent"  
+                 pieLabelsOutside="false"
+                 donutLabelsOutside="true"            
+                 tooltips="true"
+                 tooltipcontent="toFormatToolTipPieContent()"
+                                                            >            
+                <svg></svg>
+              </nvd3-pie-chart>
+         </md-content>
+        </md-tab>
+        <md-tab label="Horizontal bar chart">
+          <md-content class="md-padding">
+            <h1 class="md-align-c">Tasks progress</h1>
+              <h2 class="md-align-c" ng-hide="!isDataEmpty">
+              The data for tasks is empty, and chart cannot be displayed !
+              </h2>
+		      <nvd3-multi-bar-horizontal-chart
+    	         id="horizChart"
+                 data="dataHorizChart"          
+                 width="450"
+                 height="180"          
+                 callback="callbackStyleFunction()"
+                 showXAxis="false"
+                 showYAxis="true" 
+                 showValues="true"
+                 valueFormat="toSecondsFormat()"
+                                                >
+            	  <svg></svg>
+                </nvd3-multi-bar-horizontal-chart>    
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+  </div>   
 </div>
