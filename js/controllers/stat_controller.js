@@ -34,13 +34,7 @@ angular.module('timerApp').controller('StatCtrl', ['$scope', 'TasksService',  fu
           return d.y;
         }
       };
-
-      $scope.descriptionFunction = function() {
-        return function(d) {
-          return d.key;
-        }
-      };
-   
+	  
       $scope.setPositionSVG = function(){
         return function(){ 
           d3.select("svg").attr("viewBox","-45 5 600 250");
@@ -49,18 +43,36 @@ angular.module('timerApp').controller('StatCtrl', ['$scope', 'TasksService',  fu
     
       $scope.toFormatToolTipPieContent = function(){   
 	    return function(key, x) {
-        return  '<table>'+'<tr><td>name:</td>'+'<td>'+key+'</td></tr>'+
-                '<tr><td>time:</td>'+'<td>'+toFormatNum(x)+' sec'+'</td></tr>'+
+        return  '<table>'+'<tr><td>name:</td>'+
+                '<td>'+key+'</td></tr>'+'<tr><td>time &nbsp:</td>'+
+                '<td>'+toFormatNum(x)+' sec'+'</td></tr>'+
+                '</table>'       
+	      }
+      };
+	  
+	  $scope.toFormatToolTipHorizContent = function(){         	  
+	    return function(key, x, y) {
+        return  '<table>'+'<tr><td>name:</td>'+
+                '<td>'+key[getKeysX(x , key)]+
+                '</td></tr>'+'<tr><td>time &nbsp:</td>'+
+                '<td>'+y+'</td></tr>'+
                 '</table>'        
 	      }
       };
     
-      $scope.toSecondsFormat = function(){
+      $scope.toHorizYchartDataFormat = function(){
         return function(d){   
           return toFormatNum(d)+' sec';
         }
       };
-      
+            
+      function getKeysX (x, key){
+		  var index  = 1,
+		      step   = 2,
+			  numKey = x+step;
+		  return (index===x)? x-index : ((numKey+index)/step)-step;
+      };	
+    
       function toFormatNum(d){
          return (/,/.test(d))? parseFloat(d.replace(',',''))/1000 : d/1000;      
       };

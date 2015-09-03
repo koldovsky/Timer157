@@ -14,8 +14,8 @@
                 </md-tooltip>
             </md-button>
             <md-input-container md-theme="input" class="md-search">
-                <label>&nbsp;</label>
-                <input ng-model="search.who">
+                  <label>Search query</label>
+                  <input ng-model="search.name">
             </md-input-container>
             <md-button class="md-icon-button md-primary" aria-label="Search">
                 <md-icon md-font-set="material-icons">search</md-icon>
@@ -29,27 +29,25 @@
     <md-content layout="row" layout-align="center ">
         <md-list flex class="md-list-margin">
             <md-list-item>
-                <div flex="1"><h3>ID</h3></div>
-                <div flex="8" class="md-align-c"><h3>Name</h3></div>
-                <div flex="10" class="md-align-c"><h3>Operation type</h3></div>
-                <div flex="10" class="md-align-c"><h3>Timer type</h3></div>
-                <div flex="10" class="md-align-c"><h3>Template url</h3></div>
-                <div flex="10" class="md-align-c"><h3>Controller</h3></div>
-                <div flex="30" class="md-align-c"><h3>Location</h3></div>
-				<div flex="10" class="md-align-c"><h3>Date</h3></div>
+                <div flex="1"><h3 ng-click="sortData('id')">ID</h3></div>
+                <div flex="8" class="md-align-c"><h3 ng-click="sortData('name')">Name</h3></div>
+                <div flex="10" class="md-align-c"><h3 ng-click="sortData('timerType')">Timer type</h3></div>
+                <div flex="10" class="md-align-c"><h3 ng-click="sortData('templateUrl')">Template url</h3></div>
+                <div flex="10" class="md-align-c"><h3 ng-click="sortData('controller')">Controller</h3></div>
+                <div flex="40" class="md-align-c"><h3 ng-click="sortData('loc')">Location</h3></div>
+				<div flex="10" class="md-align-c"><h3 ng-click="sortData('date')">Date</h3></div>
                 <div flex="10" class="md-align-c"><h3>Actions</h3></div>
             </md-list-item>
             <!--Start Repeat-->
-            <div ng-repeat="log in logs track by $index">
+            <div ng-repeat="log in logs | filter:search">
                 <md-divider ></md-divider>
                 <md-list-item class="" layout-padding="10">
                     <div flex="1">{{log.id}}</div>
                     <div flex="8" class="md-align-c">{{log.name}}</div>
-                    <div flex="10" class="md-align-c">{{log.name}}</div>
                     <div flex="10" class="md-align-c">{{log.timerType}}</div>
                     <div flex="10" class="md-align-c">{{log.templateUrl}}</div>
                     <div flex="10" class="md-align-c">{{log.controller}}</div>
-                    <div flex="30" class="md-align-c">{{log.loc}}</div>
+                    <div flex="40" class="md-align-c">{{log.loc}}</div>
 					<div flex="10" class="md-align-c">{{log.date}}</div>
 					
                     <div flex="10" class="md-align-c">
@@ -70,29 +68,17 @@
                                 </md-button>
                             </md-fab-trigger>
                             <md-fab-actions>
-                                <md-button aria-label="Export text" class="md-fab md-raised md-mini">
+                                <md-button aria-label="Export text" class="md-fab md-raised md-mini" onclick="$('#logs').tableExport({type:'txt',escape:'false'});">
                                     <img src="img/txt.png" alt="text">
-                                    <md-tooltip>
-                                        Export text
-                                    </md-tooltip>
                                 </md-button>
-                                <md-button aria-label="Export json" class="md-fab md-raised md-mini">
+                                <md-button aria-label="Export json" class="md-fab md-raised md-mini" onclick="$('#logs').tableExport({type:'json',escape:'false'});">
                                     <img src="img/js.png" alt="json">
-                                    <md-tooltip>
-                                        Export json
-                                    </md-tooltip>
                                 </md-button>
-                                <md-button aria-label="Export xls" class="md-fab md-raised md-mini">
+                                <md-button aria-label="Export xls" class="md-fab md-raised md-mini" onclick="$('#logs').tableExport({type:'excel',escape:'false'});">
                                     <img src="img/exel.png" alt="xls">
-                                    <md-tooltip>
-                                        Export xls
-                                    </md-tooltip>
                                 </md-button>
-                                <md-button aria-label="Export xml" class="md-fab md-raised md-mini">
+                                <md-button aria-label="Export xml" class="md-fab md-raised md-mini" onclick="$('#logs').tableExport({type:'xml',escape:'false'});">
                                     <img src="img/xml.png" alt="xml">
-                                    <md-tooltip>
-                                        Export xml
-                                    </md-tooltip>
                                 </md-button>
                             </md-fab-actions>
                         </md-fab-speed-dial>

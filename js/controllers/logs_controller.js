@@ -9,6 +9,16 @@ angular.module('timerApp').controller('LogsController', ['$scope', 'TasksService
 	 };
      $scope.deleteAllLogs = function(){
          LogsService.deleteAllLogs();
-     }
+     };
+	 $scope.sortData = function(sortProperty, sortFlag){
+		 var sortFlag = ($scope.sortProperty === sortProperty) ? 1 : 0; 
+		var compare = function(a, b){
+        return a[sortProperty] > b[sortProperty];
+    };
+    if(!sortFlag) $scope.logs.sort(compare);
+      else $scope.logs.reverse();
+	  $scope.sortProperty = sortProperty;
+  };
+  $scope.sortProperty = '';
 }]);
 })();

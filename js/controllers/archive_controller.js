@@ -20,7 +20,15 @@ function($scope, TasksService, timeFormatFilter){
     });
   }
   
+  $scope.sortArchive = function(sortProperty){
+	  console.log('sort');
+    var sortFlag = ($scope.sortProperty === sortProperty) ? 1 : 0;  
+    TasksService.sortData('archiveList', sortProperty, sortFlag);
+    $scope.sortProperty = sortProperty;
+  };
+  
 	$scope.archive = TasksService.getArchiveList();
-  $scope.getTotalTime();
-}]);
+    $scope.getTotalTime();
+	$scope.sortProperty = '';
+	}]);
 })();

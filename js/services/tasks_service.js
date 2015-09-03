@@ -6,8 +6,8 @@ angular.module('timerApp').service('TasksService', function(){
 	this.archive = [];
 	
 	this.getTasksList = function(){
-		if(localStorage.getItem('taskList')){
-			this.tasks = angular.fromJson(localStorage.getItem('taskList'));
+    this.tasks = angular.fromJson(localStorage.getItem('taskList'));
+		if(this.tasks){
 			angular.forEach(this.tasks, function(task){
 				if('limitSec' in task.timer){
 					var limitSec = task.timer.limitSec;
@@ -32,16 +32,17 @@ angular.module('timerApp').service('TasksService', function(){
           }
 				task.currentTime = task.timer.getCurrentTime();
 			});
-		}	
+		}	else this.tasks = [];
 		return this.tasks;
 	};
   
   this.addTask = function(newTask, index){
-		var task = {
+    var task = {
 			name: newTask.name,
 			isRunning: false,
-			creationDate: Date.now()
+      details: newTask.details
 		};
+    task.creationDate = (newTask.creationDate) ? newTask.creationDate : Date.now(); 
     if(!isNaN(parseInt(newTask.goal)) && isFinite(newTask.goal)){
       task.timer = new CountDown();	
       task.timer.setLimitSec(newTask.goal);
@@ -62,6 +63,7 @@ angular.module('timerApp').service('TasksService', function(){
     archive.goal = ('limitSec' in task.timer) ? task.timer.limitSec : '-';
     archive.creationDate = task.creationDate;
     archive.closingDate = Date.now();
+    archive.details = task.details;
     
     this.archive.push(archive);
     this.tasks.splice(index,1);
@@ -99,6 +101,39 @@ angular.module('timerApp').service('TasksService', function(){
 		this.archive.splice(index,1);
     _this.saveData('archiveList');
 	};
+  
+  this.removeAllArchive = function(){
+    this.archive = [];
+    _this.saveData('archiveList');
+  };
+  
+  this.sortData = function(sortObject, sortProperty, sortFlag){
+    var compare = function(a, b){
+      if(sortProperty === 'goal'){
+        if(a.timer.limitSec && b.timer.limitSec){
+          return a.timer.limitSec > b.timer.limitSec;
+        }
+        if(!a.timer.limitSec) return -1;
+        if(!b.timer.limitSec) return 1;  
+      }
+      return a[sortProperty] > b[sortProperty];
+    };
+    
+    var sortArr;
+    switch(sortObject){
+      case 'taskList':
+        sortArr = _this.tasks;
+        break;
+      case 'todoList':
+        sortArr = _this.todos;
+        break;  
+      case 'archiveList':
+        sortArr = _this.archive;
+        break;  
+    }
+    if(!sortFlag) sortArr.sort(compare);
+      else sortArr.reverse();
+  };
   
   this.saveData = function(){
     if(arguments.length){

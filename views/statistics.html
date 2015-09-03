@@ -1,4 +1,4 @@
-<div  layout-fill layout="column" ng-controller="StatCtrl" class="animated fadeIn">
+<div  layout-fill layout="column" ng-controller="StatCtrl">
   <div>
     <md-content class="md-padding" >
       <md-tabs md-dynamic-height md-border-bottom>   
@@ -27,10 +27,10 @@
                  donutLabelsOutside="true"            
                  tooltips="true"
                  tooltipcontent="toFormatToolTipPieContent()"
-                                                            >            
+                 >            
                 <svg></svg>
-              </nvd3-pie-chart>
-         </md-content>
+              </nvd3-pie-chart>  
+          </md-content>
         </md-tab>
         <md-tab label="Horizontal bar chart">
           <md-content class="md-padding">
@@ -38,19 +38,23 @@
               <h2 class="md-align-c" ng-hide="!isDataEmpty">
               The data for tasks is empty, and chart cannot be displayed !
               </h2>
-		      <nvd3-multi-bar-horizontal-chart
+			  <nvd3-multi-bar-horizontal-chart
     	         id="horizChart"
                  data="dataHorizChart"          
                  width="450"
                  height="180"          
                  callback="callbackStyleFunction()"
                  showXAxis="false"
-                 showYAxis="true" 
-                 showValues="true"
-                 valueFormat="toSecondsFormat()"
-                                                >
+                 showYAxis="true"
+				 yAxisTickFormat="toHorizYchartDataFormat()"
+                 showValues="false"
+                 valueFormat="toHorizYchartDataFormat()"
+				 showLegend="true"
+				 tooltips="true"
+                 tooltipcontent="toFormatToolTipHorizContent()"
+                 >
             	  <svg></svg>
-                </nvd3-multi-bar-horizontal-chart>    
+                </nvd3-multi-bar-horizontal-chart>   
           </md-content>
         </md-tab>
       </md-tabs>

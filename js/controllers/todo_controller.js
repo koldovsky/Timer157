@@ -23,10 +23,6 @@ angular.module('timerApp').controller('TodoController', ['$scope',
 		TasksService.removeTodo(index);
 	};
 	
-	$scope.updateStorage = function() {
-
-	};
-	
 	$scope.startTodo = function(index) {
 		TasksService.addTask($scope.todos[index]);
 		$scope.removeTodo(index);
@@ -35,5 +31,13 @@ angular.module('timerApp').controller('TodoController', ['$scope',
 	$scope.removeTodo = function(index){
 		TasksService.removeTodo(index);
 	};
+	
+	$scope.sortTodo = function(sortProperty){
+		var sortFlag = ($scope.sortProperty === sortProperty) ? 1 : 0;  
+		TasksService.sortData('todoList', sortProperty, sortFlag);
+		$scope.sortProperty = sortProperty;
+	};
+	
+	$scope.sortProperty = '';
 }]);
 })();
