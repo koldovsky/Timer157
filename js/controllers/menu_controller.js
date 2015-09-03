@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('timerApp').controller('MenuCtrl', function ($scope, $mdSidenav, $mdUtil, $log) {
+    angular.module('timerApp').controller('MenuCtrl', function ($scope) {
 
         $scope.menu = {};
         $scope.menu.pages = [
@@ -21,22 +21,6 @@
         $scope.menu.toggleSelectPage = function(page) {
             $scope.menu.currentPage = page;
         };
-
-
-        $scope.toggleLeft = buildToggler('left');
-        $scope.toggleRight = buildToggler('right');
-
-        function buildToggler(navID) {
-            var debounceFn =  $mdUtil.debounce(function(){
-                $mdSidenav(navID)
-                    .toggle()
-                    .then(function () {
-                        $log.debug("toggle " + navID + " is done");
-                    });
-            },200);
-            return debounceFn;
-        }
-
 
     });
 
