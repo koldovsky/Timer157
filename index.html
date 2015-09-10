@@ -15,17 +15,18 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="bower_components/angular-nvd3-master/css/nv.d3.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link rel="stylesheet" href="css/app.css"/>
-
+  <link rel="stylesheet" href="css/animate.css"/>
 </head>
 
 <body>
 <section  ng-controller="MenuCtrl">
 
   <md-toolbar class="app-toolbar md-indigo-theme md-whiteframe-z2 fix-top">
-    <div class="md-toolbar-tools" layout="row">
+    <div class="md-toolbar-tools" layout="row" ng-controller="LeftCtrl">
         <md-button class="md-icon-button" ng-click="toggleLeft()" hide-gt-md>
             <md-icon md-font-set="material-icons">menu</md-icon>
         </md-button>
@@ -60,12 +61,11 @@
     </div>
   </section>
   <!--Views-->
-  <md-content  flex ng-view layout-align="center center" layout-fill>
+  <md-content  flex ng-view layout-align="center center" layout-fill class="md-view">
 
   </md-content>
 
   <!-- Angular Material Dependencies -->
-
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
@@ -73,23 +73,29 @@
   <script src="bower_components/angular-aria/angular-aria.min.js"></script>
   <script src="bower_components/hammerjs/hammer.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
-
+  <!-- graphic liberies nvd3  --> 
+  <script src="bower_components/angular-nvd3-master/lib/d3.js"></script>
+  <script src="bower_components/angular-nvd3-master/lib/nv.d3.js"></script>   
+  <script src="bower_components/angular-nvd3-master/lib/angularjs-nvd3-directives.min.js"></script>  
   <!-- Other Scripts -->
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="js/scripts/export.js"></script>
+  <script src="js/scripts/main.js"></script>
   <script src="js/classes/timer_class.js"></script>
   <script src="js/classes/archived_timer.js"></script>
-  <script src="js/modules/timerApp.js"></script>
+  <script src="js/modules/timer_module.js"></script>
   
-  <script src="js/services/tasksservice.js"></script>
-  
-  <script src="js/controllers/MenuCtrl.js"></script>
-  <script src="js/controllers/LeftCtrl.js"></script>
-  <script src="js/controllers/todocontroller.js"></script>
-  <script src="js/controllers/taskscontroller.js"></script>
-  <script src="js/controllers/archivecontroller.js"></script>
-  
-  <script src="js/filters/timeformat.js"></script>
+  <script src="js/services/tasks_service.js"></script>
+  <script src="js/services/logs_service.js"></script>
 
-
-
+  <script src="js/controllers/dialog_controller.js"></script>
+  <script src="js/controllers/logs_controller.js"></script>
+  <script src="js/controllers/menu_controller.js"></script>
+  <script src="js/controllers/left_controller.js"></script>
+  <script src="js/controllers/todo_controller.js"></script>
+  <script src="js/controllers/tasks_controller.js"></script>
+  <script src="js/controllers/archive_controller.js"></script>
+  <script src="js/controllers/stat_controller.js"></script>
+  <script src="js/filters/time_format.js"></script>
 </body>
 </html>
